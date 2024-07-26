@@ -16,9 +16,9 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Divider,
+  VStack
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
-import { FiHome, FiUser, FiStar, FiBook, FiMail } from 'react-icons/fi';
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -74,25 +74,25 @@ const Navbar = () => {
           <DrawerHeader>Dheeraj</DrawerHeader>
 
           <DrawerBody>
-            <Flex direction="column" align="center" width="100%">
-              <Link href="#home" py={2} onClick={onClose} display="flex" alignItems="center" width="100%">
-                <FiHome size={20} mr={3} /> Home
+            <VStack spacing={4} align="stretch">
+              <Link href="#home" py={2} onClick={onClose} _hover={{ bg: 'blue.100', borderRadius: '5px' }} transition="all 0.2s ease-in-out" textAlign="center">
+                Home
               </Link>
               <Divider />
-              <Link href="#about" py={2} onClick={onClose} display="flex" alignItems="center" width="100%">
-                <FiUser size={20} mr={3} /> About
+              <Link href="#about" py={2} onClick={onClose} _hover={{ bg: 'blue.100', borderRadius: '5px' }} transition="all 0.2s ease-in-out" textAlign="center"> 
+                About
               </Link>
               <Divider />
-              <Link href="#skills" py={2} onClick={onClose} display="flex" alignItems="center" width="100%">
-                <FiStar size={20} mr={3} /> Skills
+              <Link href="#skills" py={2} onClick={onClose} _hover={{ bg: 'blue.100', borderRadius: '5px'}} transition="all 0.2s ease-in-out" textAlign="center">
+                Skills
               </Link>
               <Divider />
-              <Link href="#projects" py={2} onClick={onClose} display="flex" alignItems="center" width="100%">
-                <FiBook size={20} mr={3} /> Projects
+              <Link href="#projects" py={2} onClick={onClose} _hover={{ bg: 'blue.100', borderRadius: '5px', bgopacity: '50%'}} transition="all 0.2s ease-in-out" textAlign="center"> 
+                Projects
               </Link>
               <Divider />
-              <Link href="#education" py={2} onClick={onClose} display="flex" alignItems="center" width="100%">
-                <FiBook size={20} mr={3} /> Education
+              <Link href="#education" py={2} onClick={onClose} _hover={{ bg: 'blue.100', borderRadius: '5px' }} transition="all 0.2s ease-in-out" textAlign="center">
+                Education
               </Link>
               <Divider />
               <Button 
@@ -110,7 +110,7 @@ const Navbar = () => {
               >
                 Contact Me
               </Button>
-            </Flex>
+            </VStack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
