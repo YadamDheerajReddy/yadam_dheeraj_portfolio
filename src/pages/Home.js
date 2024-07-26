@@ -1,18 +1,36 @@
 // src/pages/Home.js
-import { Text, Button, Heading, Container, Box, Link, Flex, Grid, GridItem } from '@chakra-ui/react';
+import { useState } from 'react';
+import { Text, Button, Heading, Container, Box, Link, Flex, Grid, Icon, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, useDisclosure } from '@chakra-ui/react';
+import { FaHtml5, FaCss3Alt, FaJs, FaBootstrap, FaReact, FaNodeJs, FaPython, FaFigma } from 'react-icons/fa';
+import { SiFlask } from 'react-icons/si';
 import { keyframes } from '@emotion/react';
 
-const float = keyframes`
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
+const fadeInUp = keyframes`
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 `;
 
 const skills = [
-  "HTML", "CSS", "JavaScript", "Bootstrap", "ReactJS", "NodeJS", "Flask", "Figma", "Python"
+  { name: "HTML", icon: FaHtml5, description: "Markup language for creating web pages" },
+  { name: "CSS", icon: FaCss3Alt, description: "Stylesheet language for designing web pages" },
+  { name: "JavaScript", icon: FaJs, description: "Programming language for web development" },
+  { name: "Bootstrap", icon: FaBootstrap, description: "CSS framework for responsive design" },
+  { name: "React", icon: FaReact, description: "JavaScript library for building user interfaces" },
+  { name: "Node.js", icon: FaNodeJs, description: "JavaScript runtime for server-side development" },
+  { name: "Flask", icon: SiFlask, description: "Micro web framework for Python" },
+  { name: "Figma", icon: FaFigma, description: "Design tool for creating user interfaces" },
+  { name: "Python", icon: FaPython, description: "Programming language for various applications" }
 ];
 
 const Home = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [selectedSkill, setSelectedSkill] = useState(null);
+
+  const handleSkillClick = (skill) => {
+    setSelectedSkill(skill);
+    onOpen();
+  };
+
   return (
     <Flex direction="column" align="center" justify="center" minH="100vh" px={4}>
       <Container maxW="container.lg" textAlign={{ base: 'left', md: 'justify' }} mt={{ base: 10, md: 100 }} px={{ base: 4, md: 0 }} width={{ base: '100%', md: '800px' }}>
@@ -83,24 +101,53 @@ const Home = () => {
           <Heading as="h2" size={{ base: 'lg', md: 'xl' }} fontFamily="Nunito, sans-serif" mb={4} textAlign="center">
             Skills
           </Heading>
-          <Grid templateColumns="repeat(auto-fill, minmax(150px, 1fr))" gap={6}>
-            {skills.map((skill) => (
-              <GridItem
-                key={skill}
-                bg="gray.100"
-                p={4}
+          <Grid templateColumns="repeat(auto-fill, minmax(150px, 1fr))" gap={6} justifyItems="center">
+            {skills.map((skill, index) => (
+              <Box
+                key={skill.name}
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                justifyContent="center"
+                bg="white"
+                color="black"
                 borderRadius="md"
+                boxShadow="md"
+                width="150px"
+                height="150px"
+                mx={2}
                 textAlign="center"
                 fontWeight="bold"
-                color="black"
-                _hover={{ bg: 'blue.500', color: 'white', animation: `${float} 2s infinite` }}
-                transition="all 0.2s ease-in-out"
+                transition="transform 0.2s, background-color 0.2s, color 0.2s"
+                _hover={{ transform: 'scale(1.05)', boxShadow: 'lg', bg: 'blue.500', color: 'white' }}
+                animation={`${fadeInUp} 0.6s ${index * 0.1}s forwards`}
+                opacity="0"
+                cursor="pointer"
+                onClick={() => handleSkillClick(skill)}
               >
-                {skill}
-              </GridItem>
+                <Icon as={skill.icon} boxSize="40px" mb={2} />
+                <Text mt={2}>{skill.name}</Text>
+              </Box>
             ))}
           </Grid>
         </Box>
+
+        {/* Skill Modal */}
+        {selectedSkill && (
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>{selectedSkill.name}</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                <Flex direction="column" align="center">
+                  <Icon as={selectedSkill.icon} boxSize="40px" mb={4} />
+                  <Text>{selectedSkill.description}</Text>
+                </Flex>
+              </ModalBody>
+            </ModalContent>
+          </Modal>
+        )}
       </Container>
     </Flex>
   );
