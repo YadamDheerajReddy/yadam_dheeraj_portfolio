@@ -140,7 +140,7 @@ const Navbar = () => {
               <Input placeholder="Your Name" mb={3} />
               <Input type="email" placeholder="Your Email" mb={3} />
               <Textarea placeholder="Your Message" mb={3} />
-              <Button type="submit" bg="blue.500" color="white" _hover={{ bg: 'blue.600' }} width="100%">
+              <Button type="submit" bg="#000000" color="white" _hover={{ bg: '#000000' }} width="100%" borderRadius="0">
                 Send Message
               </Button>
             </Box>
