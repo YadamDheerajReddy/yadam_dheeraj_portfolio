@@ -1,7 +1,35 @@
 // src/pages/Home.js
 import { useState } from 'react';
-import { Text, Button, Heading, Container, Box, Link, Flex, Grid, Icon, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, useDisclosure } from '@chakra-ui/react';
-import { FaHtml5, FaCss3Alt, FaJs, FaBootstrap, FaReact, FaNodeJs, FaPython, FaFigma } from 'react-icons/fa';
+import {
+  Text,
+  Button,
+  Heading,
+  Container,
+  Box,
+  Link,
+  Flex,
+  Grid,
+  Icon,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  useDisclosure,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+  Image,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+} from '@chakra-ui/react';
+import { FaHtml5, FaCss3Alt, FaJs, FaBootstrap, FaReact, FaNodeJs, FaPython, FaFigma, FaGraduationCap, FaSchool, FaCertificate } from 'react-icons/fa';
 import { SiFlask } from 'react-icons/si';
 import { keyframes } from '@emotion/react';
 
@@ -21,6 +49,61 @@ const skills = [
   { name: "Figma", icon: FaFigma, description: "Design tool for creating user interfaces" },
   { name: "Python", icon: FaPython, description: "Programming language for various applications" }
 ];
+
+const projects = [
+  {
+    title: "Project One",
+    description: "This is a description for project one.",
+    technologies: ["React", "Node.js", "CSS"],
+    link: "#",
+    imageUrl: "https://via.placeholder.com/1920x1080", // Replace with actual image URL
+  },
+  {
+    title: "Project Two",
+    description: "This is a description for project two.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    link: "#",
+    imageUrl: "https://via.placeholder.com/1920x1080", // Replace with actual image URL
+  },
+  {
+    title: "Project Three",
+    description: "This is a description for project three.",
+    technologies: ["Python", "Flask", "SQL"],
+    link: "#",
+    imageUrl: "https://via.placeholder.com/1920x1080", // Replace with actual image URL
+  },
+  // Add more projects as needed
+];
+
+const education = {
+  highSchool: [
+    {
+      institution: "High School B",
+      degree: "High School Diploma",
+      duration: "2013 - 2015",
+      description: "Focus on science and mathematics, graduated with distinction.",
+    },
+    // Add more high school entries as needed
+  ],
+  university: [
+    {
+      institution: "University A",
+      degree: "Bachelor of Science in Computer Science",
+      duration: "2015 - 2019",
+      description: "Graduated with honors, specialized in software development.",
+    },
+    // Add more university entries as needed
+  ],
+  certifications: [
+    {
+      institution: "Certification C",
+      degree: "Certified Web Developer",
+      duration: "2020",
+      description: "Completed a comprehensive web development certification.",
+    },
+    // Add more certifications as needed
+  ]
+};
 
 const Home = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -148,6 +231,102 @@ const Home = () => {
             </ModalContent>
           </Modal>
         )}
+
+        {/* Projects Section */}
+        <Box mt={{ base: 10, md: 20 }} width="100%">
+          <Heading as="h2" size={{ base: 'lg', md: 'xl' }} fontFamily="Nunito, sans-serif" mb={4} textAlign="center">
+            Projects
+          </Heading>
+          <Accordion allowMultiple>
+            {projects.map((project, index) => (
+              <AccordionItem key={index} border="none" mb={4}>
+                <AccordionButton _expanded={{ bg: 'blue.500', color: 'white' }} _hover={{ bg: 'blue.400' }} borderRadius="md" boxShadow="md" transition="background-color 0.3s ease">
+                  <Box flex="1" textAlign="left" fontWeight="bold">
+                    {project.title}
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+                <AccordionPanel pb={4} bg="gray.50" borderRadius="md" boxShadow="md">
+                  <Flex direction={{ base: 'column', md: 'row' }} alignItems="center">
+                    <Box flex="1" borderRadius="md" p={4} mb={{ base: 4, md: 0 }} mr={{ md: 4 }} overflow="hidden">
+                      <Image src={project.imageUrl} alt={project.title} borderRadius="md" />
+                    </Box>
+                    <Box flex="2">
+                      <Heading as="h3" size="md" mb={2}>{project.title}</Heading>
+                      <Text mb={2}>{project.description}</Text>
+                      <Text fontWeight="bold" mb={2}>Technologies Used:</Text>
+                      <Flex wrap="wrap" mb={2}>
+                        {project.technologies.map((tech, techIndex) => (
+                          <Box key={techIndex} bg="gray.200" borderRadius="md" p={1} m={1}>
+                            {tech}
+                          </Box>
+                        ))}
+                      </Flex>
+                      <Button as="a" href={project.link} target="_blank" rel="noopener noreferrer" bg="blue.500" color="white" _hover={{ bg: 'blue.600' }}>
+                        View Project
+                      </Button>
+                    </Box>
+                  </Flex>
+                </AccordionPanel>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </Box>
+
+        {/* Education Section */}
+        <Box mt={{ base: 10, md: 20 }} width="100%">
+          <Heading as="h2" size={{ base: 'lg', md: 'xl' }} fontFamily="Nunito, sans-serif" mb={4} textAlign="center">
+            Education
+          </Heading>
+          <Tabs variant="enclosed" colorScheme="blue">
+            <TabList>
+              <Tab>
+                <Icon as={FaSchool} mr={2} />
+                High School
+              </Tab>
+              <Tab>
+                <Icon as={FaGraduationCap} mr={2} />
+                University
+              </Tab>
+              <Tab>
+                <Icon as={FaCertificate} mr={2} />
+                Certifications
+              </Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                {education.highSchool.map((edu, index) => (
+                  <Box key={index} bg="white" borderRadius="md" boxShadow="md" p={6} mb={6} borderLeft="4px solid blue.500">
+                    <Heading as="h3" size="md" mb={2}>{edu.institution}</Heading>
+                    <Text fontWeight="bold" mb={2}>{edu.degree}</Text>
+                    <Text mb={2} color="gray.600">{edu.duration}</Text>
+                    <Text>{edu.description}</Text>
+                  </Box>
+                ))}
+              </TabPanel>
+              <TabPanel>
+                {education.university.map((edu, index) => (
+                  <Box key={index} bg="white" borderRadius="md" boxShadow="md" p={6} mb={6} borderLeft="4px solid blue.500">
+                    <Heading as="h3" size="md" mb={2}>{edu.institution}</Heading>
+                    <Text fontWeight="bold" mb={2}>{edu.degree}</Text>
+                    <Text mb={2} color="gray.600">{edu.duration}</Text>
+                    <Text>{edu.description}</Text>
+                  </Box>
+                ))}
+              </TabPanel>
+              <TabPanel>
+                {education.certifications.map((edu, index) => (
+                  <Box key={index} bg="white" borderRadius="md" boxShadow="md" p={6} mb={6} borderLeft="4px solid blue.500">
+                    <Heading as="h3" size="md" mb={2}>{edu.institution}</Heading>
+                    <Text fontWeight="bold" mb={2}>{edu.degree}</Text>
+                    <Text mb={2} color="gray.600">{edu.duration}</Text>
+                    <Text>{edu.description}</Text>
+                  </Box>
+                ))}
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </Box>
       </Container>
     </Flex>
   );

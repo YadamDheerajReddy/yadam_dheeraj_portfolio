@@ -16,12 +16,25 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Divider,
-  VStack
+  VStack,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  Input,
+  Textarea,
+  Text,
+  Icon  
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
+import { FaFacebook, FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen: isModalOpen, onOpen: onModalOpen, onClose: onModalClose } = useDisclosure();
   const btnRef = useRef();
 
   return (
@@ -50,6 +63,7 @@ const Navbar = () => {
           _hover={{ bg: 'blue.500', transform: 'scale(1.1)' }}
           transition="all 0.2s ease-in-out"
           display={{ base: 'none', md: 'block' }}
+          onClick={onModalOpen}
         >
           Contact Me
         </Button>
@@ -105,7 +119,7 @@ const Navbar = () => {
                 fontWeight="0"
                 _hover={{ bg: 'blue.500', transform: 'scale(1.1)' }}
                 transition="all 0.2s ease-in-out"
-                onClick={onClose}
+                onClick={onModalOpen}
                 width="100%"
               >
                 Contact Me
@@ -114,6 +128,42 @@ const Navbar = () => {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
+
+      {/* Contact Me Modal */}
+      <Modal isOpen={isModalOpen} onClose={onModalClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Contact Me</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Box as="form">
+              <Input placeholder="Your Name" mb={3} />
+              <Input type="email" placeholder="Your Email" mb={3} />
+              <Textarea placeholder="Your Message" mb={3} />
+              <Button type="submit" bg="blue.500" color="white" _hover={{ bg: 'blue.600' }} width="100%">
+                Send Message
+              </Button>
+            </Box>
+            <Box mt={6} textAlign="center">
+              <Text fontWeight="bold" mb={2}>Follow Me</Text>
+              <Flex justify="center" spacing={4}>
+                <Link href="https://facebook.com" isExternal mx={2}>
+                  <Icon as={FaFacebook} boxSize="6" />
+                </Link>
+                <Link href="https://twitter.com" isExternal mx={2}>
+                  <Icon as={FaTwitter} boxSize="6" />
+                </Link>
+                <Link href="https://linkedin.com" isExternal mx={2}>
+                  <Icon as={FaLinkedin} boxSize="6" />
+                </Link>
+                <Link href="https://github.com" isExternal mx={2}>
+                  <Icon as={FaGithub} boxSize="6" />
+                </Link>
+              </Flex>
+            </Box>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </>
   );
 };
