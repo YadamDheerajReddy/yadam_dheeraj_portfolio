@@ -1,5 +1,4 @@
-// src/components/Navbar.js
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import {
   Box,
   Flex,
@@ -30,52 +29,46 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { FaFacebook, FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { Link as ScrollLink } from 'react-scroll';
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isOpen: isModalOpen, onOpen: onModalOpen, onClose: onModalClose } = useDisclosure();
   const btnRef = useRef();
-  const [scrollY, setScrollY] = useState(0);
-
-  const handleScroll = () => {
-    setScrollY(window.scrollY);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const parallaxStyle = {
-    backgroundPositionY: `${scrollY * 0.5}px`,
-  };
 
   return (
     <>
-      <Flex
-        as="nav"
-        align="center"
-        justify="space-between"
-        padding="1.5rem"
-        bg="white"
-        borderBottom="2px solid black"
-        position="sticky"
-        top="0"
-        zIndex="1000"
-        style={parallaxStyle}
-      >
+      <Flex as="nav" align="center" justify="space-between" padding="1.5rem" bg="white" borderBottom="2px solid black" position="sticky" top="0" zIndex="1000">
         <Heading as="h1" size="lg" letterSpacing={'-.1rem'}>
           Dheeraj
         </Heading>
         <Spacer />
         <Box display={{ base: 'none', md: 'flex' }} alignItems="center" flex="1" justifyContent="center">
-          <Link href="#home" px={4} fontSize="lg" _hover={{ color: 'blue.500', textDecoration: 'none', transform: 'scale(1.1)' }} transition="all 0.2s ease-in-out">Home</Link>
-          <Link href="#about" px={4} fontSize="lg" _hover={{ color: 'blue.500', textDecoration: 'none', transform: 'scale(1.1)' }} transition="all 0.2s ease-in-out">About</Link>
-          <Link href="#skills" px={4} fontSize="lg" _hover={{ color: 'blue.500', textDecoration: 'none', transform: 'scale(1.1)' }} transition="all 0.2s ease-in-out">Skills</Link>
-          <Link href="#projects" px={4} fontSize="lg" _hover={{ color: 'blue.500', textDecoration: 'none', transform: 'scale(1.1)' }} transition="all 0.2s ease-in-out">Projects</Link>
-          <Link href="#education" px={4} fontSize="lg" _hover={{ color: 'blue.500', textDecoration: 'none', transform: 'scale(1.1)' }} transition="all 0.2s ease-in-out">Education</Link>
+          <ScrollLink to="home" smooth={true} duration={500}>
+            <Link px={4} fontSize="lg" _hover={{ color: 'blue.500', textDecoration: 'none', transform: 'scale(1.1)' }} transition="all 0.2s ease-in-out">
+              Home
+            </Link>
+          </ScrollLink>
+          <ScrollLink to="about" smooth={true} duration={500}>
+            <Link px={4} fontSize="lg" _hover={{ color: 'blue.500', textDecoration: 'none', transform: 'scale(1.1)' }} transition="all 0.2s ease-in-out">
+              About
+            </Link>
+          </ScrollLink>
+          <ScrollLink to="skills" smooth={true} duration={500}>
+            <Link px={4} fontSize="lg" _hover={{ color: 'blue.500', textDecoration: 'none', transform: 'scale(1.1)' }} transition="all 0.2s ease-in-out">
+              Skills
+            </Link>
+          </ScrollLink>
+          <ScrollLink to="projects" smooth={true} duration={500}>
+            <Link px={4} fontSize="lg" _hover={{ color: 'blue.500', textDecoration: 'none', transform: 'scale(1.1)' }} transition="all 0.2s ease-in-out">
+              Projects
+            </Link>
+          </ScrollLink>
+          <ScrollLink to="education" smooth={true} duration={500}>
+            <Link px={4} fontSize="lg" _hover={{ color: 'blue.500', textDecoration: 'none', transform: 'scale(1.1)' }} transition="all 0.2s ease-in-out">
+              Education
+            </Link>
+          </ScrollLink>
         </Box>
         <Spacer display={{ base: 'none', md: 'block' }} />
         <Button 
@@ -114,26 +107,36 @@ const Navbar = () => {
           <DrawerHeader>Dheeraj</DrawerHeader>
 
           <DrawerBody>
-            <VStack spacing={4} align="stretch">
-              <Link href="#home" py={2} onClick={onClose} _hover={{ bg: 'blue.100', borderRadius: '5px' }} transition="all 0.2s ease-in-out" textAlign="center">
-                Home
-              </Link>
+            <VStack spacing={4} align="center">
+              <ScrollLink to="home" smooth={true} duration={500} onClick={onClose}>
+                <Link py={2} _hover={{color: 'blue' }} transition="all 0.2s ease-in-out" textAlign="center">
+                  Home
+                </Link>
+              </ScrollLink>
               <Divider />
-              <Link href="#about" py={2} onClick={onClose} _hover={{ bg: 'blue.100', borderRadius: '5px' }} transition="all 0.2s ease-in-out" textAlign="center"> 
-                About
-              </Link>
+              <ScrollLink to="about" smooth={true} duration={500} onClick={onClose}>
+                <Link py={2} _hover={{ color: 'blue' }} transition="all 0.2s ease-in-out" textAlign="center"> 
+                  About
+                </Link>
+              </ScrollLink>
               <Divider />
-              <Link href="#skills" py={2} onClick={onClose} _hover={{ bg: 'blue.100', borderRadius: '5px'}} transition="all 0.2s ease-in-out" textAlign="center">
-                Skills
-              </Link>
+              <ScrollLink to="skills" smooth={true} duration={500} onClick={onClose}>
+                <Link py={2} _hover={{ color: 'blue'}} transition="all 0.2s ease-in-out" textAlign="center">
+                  Skills
+                </Link>
+              </ScrollLink>
               <Divider />
-              <Link href="#projects" py={2} onClick={onClose} _hover={{ bg: 'blue.100', borderRadius: '5px', bgopacity: '50%'}} transition="all 0.2s ease-in-out" textAlign="center"> 
-                Projects
-              </Link>
+              <ScrollLink to="projects" smooth={true} duration={500} onClick={onClose}>
+                <Link py={2} _hover={{ color: 'blue'}} transition="all 0.2s ease-in-out" textAlign="center"> 
+                  Projects
+                </Link>
+              </ScrollLink>
               <Divider />
-              <Link href="#education" py={2} onClick={onClose} _hover={{ bg: 'blue.100', borderRadius: '5px' }} transition="all 0.2s ease-in-out" textAlign="center">
-                Education
-              </Link>
+              <ScrollLink to="education" smooth={true} duration={500} onClick={onClose}>
+                <Link py={2} _hover={{ color: 'blue' }} transition="all 0.2s ease-in-out" textAlign="center">
+                  Education
+                </Link>
+              </ScrollLink>
               <Divider />
               <Button 
                 mt={4} 
