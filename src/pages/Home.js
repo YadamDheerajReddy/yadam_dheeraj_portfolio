@@ -16,18 +16,19 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
-  useDisclosure,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
   Accordion,
   AccordionItem,
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
   Image,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
+  Divider,
+  useDisclosure
 } from '@chakra-ui/react';
 import { FaHtml5, FaCss3Alt, FaJs, FaBootstrap, FaReact, FaNodeJs, FaPython, FaFigma, FaGraduationCap, FaSchool, FaCertificate } from 'react-icons/fa';
 import { SiFlask } from 'react-icons/si';
@@ -115,8 +116,8 @@ const Home = () => {
   };
 
   return (
-    <Flex direction="column" align="center" justify="center" minH="100vh" px={4}>
-      <Container maxW="container.lg" textAlign={{ base: 'left', md: 'justify' }} mt={{ base: 10, md: 100 }} px={{ base: 4, md: 0 }} width={{ base: '100%', md: '800px' }}>
+    <Flex direction="column" align="center" justify="center" minH="100vh" px={4} mt={{ base: 120, md: 20 }}>
+      <Container maxW="container.lg" textAlign={{ base: 'left', md: 'justify' }} mt={{ base: 10, md: 100 }} px={{ base: 4, md: 0 }}>
         <Heading as="h1" size={{ base: 'xl', md: '2xl' }} fontFamily="Nunito, sans-serif">Welcome!</Heading>
         <Text fontSize={{ base: 'md', md: 'lg' }} mt={4}>
           I’m <Text as="span" fontWeight="bold" color="#0080FE" fontStyle="italic">Yadam Dheeraj Reddy</Text>, a <Text as="span" fontWeight="bold" color="#0080FE" fontStyle="italic">Front-End Web Developer</Text> passionate
@@ -142,9 +143,9 @@ const Home = () => {
         >
           Know More
         </Button>
-        
+
         {/* About Section */}
-        <Flex direction="column" align="center" mt={{ base: 10, md: 20 }} width="100%">
+        <Flex direction="column" align="center" width="100%" mt={{ base: 300, md: 300 }}>
           <Box width={{ base: '100%', md: '600px' }}>
             <Heading as="h2" size={{ base: 'lg', md: 'xl' }} fontFamily="Nunito, sans-serif" mb={4} textAlign="center">
               About Me
@@ -179,12 +180,15 @@ const Home = () => {
           </Box>
         </Flex>
 
+        {/* Divider */}
+        <Divider my={10} />
+
         {/* Skills Section */}
-        <Box mt={{ base: 10, md: 20 }} width="100%">
+        <Box width="100%" mt={{ base: 10, md: 20 }}>
           <Heading as="h2" size={{ base: 'lg', md: 'xl' }} fontFamily="Nunito, sans-serif" mb={4} textAlign="center">
             Skills
           </Heading>
-          <Grid templateColumns="repeat(auto-fill, minmax(150px, 1fr))" gap={6} justifyItems="center">
+          <Grid templateColumns={{ base: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', md: 'repeat(4, 1fr)', lg: 'repeat(5, 1fr)' }} gap={6} justifyItems="center">
             {skills.map((skill, index) => (
               <Box
                 key={skill.name}
@@ -196,8 +200,8 @@ const Home = () => {
                 color="black"
                 borderRadius="md"
                 boxShadow="md"
-                width="150px"
-                height="150px"
+                width={{ base: '100px', md: '150px' }}
+                height={{ base: '100px', md: '150px' }}
                 mx={2}
                 textAlign="center"
                 fontWeight="bold"
@@ -208,8 +212,8 @@ const Home = () => {
                 cursor="pointer"
                 onClick={() => handleSkillClick(skill)}
               >
-                <Icon as={skill.icon} boxSize="40px" mb={2} />
-                <Text mt={2}>{skill.name}</Text>
+                <Icon as={skill.icon} boxSize={{ base: '30px', md: '40px' }} mb={2} />
+                <Text mt={2} fontSize={{ base: 'sm', md: 'md' }}>{skill.name}</Text>
               </Box>
             ))}
           </Grid>
@@ -232,8 +236,11 @@ const Home = () => {
           </Modal>
         )}
 
+        {/* Divider */}
+        <Divider my={10} />
+
         {/* Projects Section */}
-        <Box mt={{ base: 10, md: 20 }} width="100%">
+        <Box width="100%" mt={{ base: 10, md: 20 }}>
           <Heading as="h2" size={{ base: 'lg', md: 'xl' }} fontFamily="Nunito, sans-serif" mb={4} textAlign="center">
             Projects
           </Heading>
@@ -273,8 +280,11 @@ const Home = () => {
           </Accordion>
         </Box>
 
+        {/* Divider */}
+        <Divider my={10} />
+
         {/* Education Section */}
-        <Box mt={{ base: 10, md: 20 }} width="100%">
+        <Box width="100%" mt={{ base: 10, md: 20 }}>
           <Heading as="h2" size={{ base: 'lg', md: 'xl' }} fontFamily="Nunito, sans-serif" mb={4} textAlign="center">
             Education
           </Heading>

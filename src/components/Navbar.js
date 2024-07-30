@@ -23,11 +23,10 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
-  ModalFooter,
   Input,
   Textarea,
   Text,
-  Icon  
+  Icon
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { FaFacebook, FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
@@ -132,7 +131,7 @@ const Navbar = () => {
       {/* Contact Me Modal */}
       <Modal isOpen={isModalOpen} onClose={onModalClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent maxW={{ base: '90%', md: '500px' }}>
           <ModalHeader>Contact Me</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -140,7 +139,7 @@ const Navbar = () => {
               <Input placeholder="Your Name" mb={3} />
               <Input type="email" placeholder="Your Email" mb={3} />
               <Textarea placeholder="Your Message" mb={3} />
-              <Button type="submit" bg="#000000" color="white" _hover={{ bg: '#000000' }} width="100%" borderRadius="0">
+              <Button type="submit" bg="blue.500" color="white" _hover={{ bg: 'blue.600' }} width="100%">
                 Send Message
               </Button>
             </Box>
