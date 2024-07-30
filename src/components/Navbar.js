@@ -1,5 +1,5 @@
 // src/components/Navbar.js
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   Box,
   Flex,
@@ -35,10 +35,37 @@ const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isOpen: isModalOpen, onOpen: onModalOpen, onClose: onModalClose } = useDisclosure();
   const btnRef = useRef();
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const parallaxStyle = {
+    backgroundPositionY: `${scrollY * 0.5}px`,
+  };
 
   return (
     <>
-      <Flex as="nav" align="center" justify="space-between" padding="1.5rem" bg="white" borderBottom="2px solid black">
+      <Flex
+        as="nav"
+        align="center"
+        justify="space-between"
+        padding="1.5rem"
+        bg="white"
+        borderBottom="2px solid black"
+        position="sticky"
+        top="0"
+        zIndex="1000"
+        style={parallaxStyle}
+      >
         <Heading as="h1" size="lg" letterSpacing={'-.1rem'}>
           Dheeraj
         </Heading>

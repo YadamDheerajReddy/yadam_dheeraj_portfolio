@@ -116,7 +116,7 @@ const Home = () => {
   };
 
   return (
-    <Flex direction="column" align="center" justify="center" minH="100vh" px={4} mt={{ base: 20, md: 40 }}>
+    <Flex direction="column" align="center" justify="center" minH="100vh" px={4} mt={{ base: 20, md: 30 }}>
       <Container maxW="container.lg" textAlign={{ base: 'left', md: 'justify' }} mt={{ base: 10, md: 100 }} px={{ base: 4, md: 0 }}>
         <Heading as="h1" size={{ base: 'xl', md: '2xl' }} fontFamily="Nunito, sans-serif">Welcome!</Heading>
         <Text fontSize={{ base: 'md', md: 'lg' }} mt={4}>
@@ -145,7 +145,7 @@ const Home = () => {
         </Button>
 
         {/* About Section */}
-        <Flex direction="column" align="center" width="100%" mt={{ base: 20, md: 40 }}>
+        <Flex direction="column" align="center" width="100%" mt={{ base: 20, md: 80 }}>
           <Box width={{ base: '100%', md: '600px' }}>
             <Heading as="h2" size={{ base: 'lg', md: 'xl' }} fontFamily="Nunito, sans-serif" mb={4} textAlign="center">
               About Me
@@ -299,7 +299,7 @@ const Home = () => {
                 University
               </Tab>
               <Tab>
-                <Icon as={FaCertificate} mr={2} />
+                <Icon as={FaCertificate} mr={2}/>
                 Certifications
               </Tab>
             </TabList>
