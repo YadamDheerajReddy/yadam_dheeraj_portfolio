@@ -25,16 +25,45 @@ import {
   Input,
   Textarea,
   Text,
-  Icon
+  Icon,
+  useToast
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { FaFacebook, FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
+import emailjs from 'emailjs-com';
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isOpen: isModalOpen, onOpen: onModalOpen, onClose: onModalClose } = useDisclosure();
   const btnRef = useRef();
+  const formRef = useRef();
+  const toast = useToast();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_fm8gzuc', 'template_hte9ahi', formRef.current, 'RN8vqjJo08r80Z8eK')
+      .then((result) => {
+        toast({
+          title: 'Message Sent',
+          description: "Your message has been sent successfully!",
+          status: 'success',
+          duration: 5000,
+          isClosable: true,
+        });
+        formRef.current.reset();
+        onModalClose();
+      }, (error) => {
+        toast({
+          title: 'Error',
+          description: "An error occurred while sending your message. Please try again later.",
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        });
+      });
+  };
 
   return (
     <>
@@ -165,10 +194,10 @@ const Navbar = () => {
           <ModalHeader>Contact Me</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Box as="form">
-              <Input placeholder="Your Name" mb={3} borderRadius="0px" />
-              <Input type="email" placeholder="Your Email" mb={3} borderRadius="0px" />
-              <Textarea placeholder="Your Message" mb={3} borderRadius="0px" />
+            <Box as="form" ref={formRef} onSubmit={sendEmail}>
+              <Input name="user_name" placeholder="Your Name" mb={3} borderRadius="0px" />
+              <Input name="user_email" type="email" placeholder="Your Email" mb={3} borderRadius="0px" />
+              <Textarea name="message" placeholder="Your Message" mb={3} borderRadius="0px" />
               <Button type="submit" bg="black" color="white" _hover={{ bg: 'blue.500', transform: 'scale(1.05)' }} width="100%" borderRadius="0px">
                 Send Message
               </Button>
