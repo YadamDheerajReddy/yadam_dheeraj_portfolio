@@ -109,31 +109,31 @@ const Navbar = () => {
           <DrawerBody>
             <VStack spacing={4} align="center">
               <ScrollLink to="home" smooth={true} duration={500} onClick={onClose}>
-                <Link py={2} _hover={{color: 'blue' }} transition="all 0.2s ease-in-out" textAlign="center">
+                <Link py={2} _hover={{color: 'blue.500' }} transition="all 0.2s ease-in-out" textAlign="center">
                   Home
                 </Link>
               </ScrollLink>
               <Divider />
               <ScrollLink to="about" smooth={true} duration={500} onClick={onClose}>
-                <Link py={2} _hover={{ color: 'blue' }} transition="all 0.2s ease-in-out" textAlign="center"> 
+                <Link py={2} _hover={{ color: 'blue.500' }} transition="all 0.2s ease-in-out" textAlign="center"> 
                   About
                 </Link>
               </ScrollLink>
               <Divider />
               <ScrollLink to="skills" smooth={true} duration={500} onClick={onClose}>
-                <Link py={2} _hover={{ color: 'blue'}} transition="all 0.2s ease-in-out" textAlign="center">
+                <Link py={2} _hover={{ color: 'blue.500'}} transition="all 0.2s ease-in-out" textAlign="center">
                   Skills
                 </Link>
               </ScrollLink>
               <Divider />
               <ScrollLink to="projects" smooth={true} duration={500} onClick={onClose}>
-                <Link py={2} _hover={{ color: 'blue'}} transition="all 0.2s ease-in-out" textAlign="center"> 
+                <Link py={2} _hover={{ color: 'blue.500'}} transition="all 0.2s ease-in-out" textAlign="center"> 
                   Projects
                 </Link>
               </ScrollLink>
               <Divider />
               <ScrollLink to="education" smooth={true} duration={500} onClick={onClose}>
-                <Link py={2} _hover={{ color: 'blue' }} transition="all 0.2s ease-in-out" textAlign="center">
+                <Link py={2} _hover={{ color: 'blue.500' }} transition="all 0.2s ease-in-out" textAlign="center">
                   Education
                 </Link>
               </ScrollLink>
@@ -166,10 +166,10 @@ const Navbar = () => {
           <ModalCloseButton />
           <ModalBody>
             <Box as="form">
-              <Input placeholder="Your Name" mb={3} />
-              <Input type="email" placeholder="Your Email" mb={3} />
-              <Textarea placeholder="Your Message" mb={3} />
-              <Button type="submit" bg="blue.500" color="white" _hover={{ bg: 'blue.600' }} width="100%">
+              <Input placeholder="Your Name" mb={3} borderRadius="0px" />
+              <Input type="email" placeholder="Your Email" mb={3} borderRadius="0px" />
+              <Textarea placeholder="Your Message" mb={3} borderRadius="0px" />
+              <Button type="submit" bg="black" color="white" _hover={{ bg: 'blue.500', transform: 'scale(1.05)' }} width="100%" borderRadius="0px">
                 Send Message
               </Button>
             </Box>
