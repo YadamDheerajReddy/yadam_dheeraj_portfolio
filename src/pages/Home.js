@@ -219,7 +219,7 @@ const Home = () => {
             _hover={{ bg: 'blue.500', transform: 'scale(1.1)' }}
             transition="all 0.2s ease-in-out"
             onClick={() => {
-              window.open('/path-to-your-resume.pdf', '_blank');
+              window.open('/resume.pdf', '_blank');
             }}
           >
             Resume
