@@ -33,7 +33,8 @@ import {
 import { FaHtml5, FaCss3Alt, FaJs, FaBootstrap, FaReact, FaNodeJs, FaPython, FaFigma, FaGraduationCap, FaSchool, FaCertificate, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
 import { SiFlask } from 'react-icons/si';
 import { keyframes } from '@emotion/react';
-import Footer from '../components/Footer'; // Import Footer component
+import Footer from '../components/Footer';
+import project1 from '../assets/project1.png';
 
 const fadeInUp = keyframes`
   0% { opacity: 0; transform: translateY(20px); }
@@ -54,11 +55,11 @@ const skills = [
 
 const projects = [
   {
-    title: "Project One",
+    title: "Dakshin - South Indian Restaurant Website",
     description: "This is a description for project one.",
-    technologies: ["React", "Node.js", "CSS"],
-    link: "#",
-    imageUrl: "https://via.placeholder.com/1920x1080", // Replace with actual image URL
+    technologies: ["React", "Node.js", "HTML", "CSS"],
+    link: "https://dakshin-ten.vercel.app/",
+    imageUrl: project1, // Replace with actual image URL
   },
   {
     title: "Project Two",
