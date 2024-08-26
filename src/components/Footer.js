@@ -1,7 +1,7 @@
 // src/components/Footer.js
 import React from 'react';
 import { Box, Flex, Link, Text, Icon, Spacer } from '@chakra-ui/react';
-import { FaFacebook, FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -18,17 +18,14 @@ const Footer = () => {
         </Box>
         <Spacer />
         <Flex justify="center">
-          <Link href="https://facebook.com" isExternal mx={2}>
-            <Icon as={FaFacebook} boxSize="6" />
-          </Link>
-          <Link href="https://twitter.com" isExternal mx={2}>
-            <Icon as={FaTwitter} boxSize="6" />
-          </Link>
-          <Link href="https://linkedin.com" isExternal mx={2}>
+          <Link href="https://www.linkedin.com/in/ydheeraj/" isExternal mx={2}>
             <Icon as={FaLinkedin} boxSize="6" />
           </Link>
-          <Link href="https://github.com" isExternal mx={2}>
+          <Link href="https://github.com/YadamDheerajReddy" isExternal mx={2}>
             <Icon as={FaGithub} boxSize="6" />
+          </Link>
+          <Link href="https://www.instagram.com/_.x.bittu.x._/" isExternal mx={2}>
+            <Icon as={FaInstagram} boxSize="6" />
           </Link>
         </Flex>
       </Flex>

@@ -30,16 +30,19 @@ import {
   Divider,
   useDisclosure
 } from '@chakra-ui/react';
-import { FaHtml5, FaCss3Alt, FaJs, FaBootstrap, FaReact, FaNodeJs, FaPython, FaFigma, FaGraduationCap, FaSchool, FaCertificate, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
+import { FaHtml5, FaCss3Alt, FaJs, FaBootstrap, FaReact, FaNodeJs, FaPython, FaFigma, FaGraduationCap, FaSchool, FaCertificate, FaLinkedin, FaGithub, FaInstagram} from 'react-icons/fa';
 import { SiFlask } from 'react-icons/si';
 import { keyframes } from '@emotion/react';
 import Footer from '../components/Footer';
 import project1 from '../assets/project1.png';
+import project2 from '../assets/project2.png';
+import project3 from '../assets/project3.png';
 
 const fadeInUp = keyframes`
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 `;
+
 
 const skills = [
   { name: "HTML", icon: FaHtml5, description: "Markup language for creating web pages" },
@@ -47,33 +50,53 @@ const skills = [
   { name: "JavaScript", icon: FaJs, description: "Programming language for web development" },
   { name: "Bootstrap", icon: FaBootstrap, description: "CSS framework for responsive design" },
   { name: "React", icon: FaReact, description: "JavaScript library for building user interfaces" },
+  {
+    name: "Next.js",
+    icon: () => (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M23.195 0.833C23.327 0.965 23.415 1.139 23.415 1.326V22.674C23.415 22.861 23.327 23.035 23.195 23.167C23.063 23.299 22.889 23.387 22.702 23.387H19.9C19.684 23.387 19.487 23.274 19.386 23.084L12.002 10.833L4.618 23.084C4.518 23.274 4.321 23.387 4.105 23.387H1.302C1.116 23.387 0.941 23.299 0.809 23.167C0.677 23.035 0.589 22.861 0.589 22.674V1.326C0.589 1.139 0.677 0.965 0.809 0.833C0.941 0.701 1.116 0.613 1.302 0.613H3.799C4.015 0.613 4.211 0.726 4.311 0.916L12.002 12.168L19.693 0.916C19.793 0.726 19.989 0.613 20.205 0.613H22.702C22.889 0.613 23.063 0.701 23.195 0.833ZM18.485 0.835L11.47 11.477L18.485 22.119H15.677L9.964 13.514L4.25 22.119H1.446L8.462 11.477L1.446 0.835H4.25L9.964 9.441L15.677 0.835H18.485Z"
+          fill="black"
+        />
+      </svg>
+    ),
+    description: "React framework for building fast, server-rendered web applications",
+  },
   { name: "Node.js", icon: FaNodeJs, description: "JavaScript runtime for server-side development" },
   { name: "Flask", icon: SiFlask, description: "Micro web framework for Python" },
   { name: "Figma", icon: FaFigma, description: "Design tool for creating user interfaces" },
-  { name: "Python", icon: FaPython, description: "Programming language for various applications" }
+  { name: "Python", icon: FaPython, description: "Programming language for various applications" },
 ];
 
 const projects = [
   {
-    title: "Dakshin - South Indian Restaurant Website",
-    description: "This is a description for project one.",
-    technologies: ["React", "Node.js", "HTML", "CSS"],
+    title: "Dakshin - Authentic South Indian Cuisine Website",
+    description: "I have designed the Dakshin website with the aim of creating a modern and user-friendly platform for an Indian restaurant that specializes in authentic South Indian cuisine. This state-of-the-art website integrates traditional cultural elements with a sleek contemporary type of design that makes it easy for users to navigate through whatever gadget they prefer.",
+    technologies: ["React", "Charka UI", "Node.js"],
     link: "https://dakshin-ten.vercel.app/",
     imageUrl: project1, // Replace with actual image URL
   },
   {
-    title: "Project Two",
-    description: "This is a description for project two.",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    link: "#",
-    imageUrl: "https://via.placeholder.com/1920x1080", // Replace with actual image URL
+    title: "NatureID - AI-Powered Plant Identification Website",
+    description: "I developed NatureID, a cutting-edge web application designed to help users identify plants through AI-powered image recognition. The website combines modern design with advanced technology, offering users a seamless experience in discovering the world of plants.",
+    technologies: ["Next.js", "Tailwind CSS", "Node.js","Gemini API"],
+    link: "https://natureid.vercel.app/",
+    imageUrl: project2, // Replace with actual image URL
   },
   {
-    title: "Project Three",
-    description: "This is a description for project three.",
-    technologies: ["Python", "Flask", "SQL"],
-    link: "#",
-    imageUrl: "https://via.placeholder.com/1920x1080", // Replace with actual image URL
+    title: "Eventura – Modern Event Booking Platform",
+    description: "I developed Eventura, a sleek and modern event booking platform designed to connect users with events seamlessly. The website is crafted with attention to detail, ensuring a visually appealing and highly functional experience for both event organizers and attendees.",
+    technologies: ["React.js", "Tailwind CSS", "Node.js"],
+    link: "https://evnetura-website.vercel.app/",
+    imageUrl: project3, // Replace with actual image URL
   },
   // Add more projects as needed
 ];
@@ -176,14 +199,14 @@ const Home = () => {
           </Button>
          </Link> 
         <Flex justify="left" margin="2px" mt={4}>
-          <Link href="https://linkedin.com" isExternal mx={2}>
+          <Link href="https://www.linkedin.com/in/ydheeraj/" isExternal mx={2}>
             <Icon as={FaLinkedin} boxSize="6" />
           </Link>
-          <Link href="https://github.com" isExternal mx={2}>
+          <Link href="https://github.com/YadamDheerajReddy" isExternal mx={2}>
             <Icon as={FaGithub} boxSize="6" />
           </Link>
-          <Link href="https://twitter.com" isExternal mx={2}>
-            <Icon as={FaTwitter} boxSize="6" />
+          <Link href="https://www.instagram.com/_.x.bittu.x._/" isExternal mx={2}>
+            <Icon as={FaInstagram} boxSize="6" />
           </Link>
         </Flex>
       </Container>
