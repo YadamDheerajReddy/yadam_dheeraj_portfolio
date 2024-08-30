@@ -106,13 +106,13 @@ const projects = [
     link: "https://weblance-test.vercel.app/",
     imageUrl: project4, // Replace with actual image URL
   },
-  {
-    title: "Project-5",
-    description: "Project Description",
-    technologies: ["React.js", "Tailwind CSS", "Node.js"],
-    link: "#",
-    imageUrl: project3, // Replace with actual image URL
-  }
+  // {
+  //   title: "Project-5",
+  //   description: "Project Description",
+  //   technologies: ["React.js", "Tailwind CSS", "Node.js"],
+  //   link: "#",
+  //   imageUrl: project3, // Replace with actual image URL
+  // }
   // Add more projects as needed
 ];
 
