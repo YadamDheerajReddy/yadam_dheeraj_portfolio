@@ -37,6 +37,7 @@ import Footer from '../components/Footer';
 import project1 from '../assets/project1.png';
 import project2 from '../assets/project2.png';
 import project3 from '../assets/project3.png';
+import project4 from '../assets/project4.png';
 
 const fadeInUp = keyframes`
   0% { opacity: 0; transform: translateY(20px); }
@@ -99,11 +100,11 @@ const projects = [
     imageUrl: project3, // Replace with actual image URL
   },
   {
-    title: "Project-4",
-    description: "Project Description",
+    title: "Weblance - Web Services Provider Website",
+    description: "Weblance is a web development agency that offers professional and creative web development services. The website is designed to be user-friendly, responsive, and SEO optimized, targeting potential clients looking for high-quality web development solutions. The design is clean and modern, with a focus on clear navigation and showcasing the company’s services, portfolio, and client testimonials.",
     technologies: ["React.js", "Tailwind CSS", "Node.js"],
-    link: "#",
-    imageUrl: project3, // Replace with actual image URL
+    link: "https://weblance-test.vercel.app/",
+    imageUrl: project4, // Replace with actual image URL
   },
   {
     title: "Project-5",
